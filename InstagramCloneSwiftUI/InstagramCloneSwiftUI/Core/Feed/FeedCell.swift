@@ -8,19 +8,24 @@
 import SwiftUI
 
 struct FeedCell: View {
+
+    let post: Post
+
     var body: some View {
         VStack {
             // image + username
             HStack {
-                Image(.batman2)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 40, height: 40)
-                    .clipShape(Circle())
+                if let user = post.user {
+                    Image(user.profileImageUrl ?? "")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
 
-                Text("batman")
-                    .font(.footnote)
-                    .fontWeight(.semibold)
+                    Text(user.userName)
+                        .font(.footnote)
+                        .fontWeight(.semibold)
+                }
 
                 Spacer()
             }
@@ -28,7 +33,7 @@ struct FeedCell: View {
 
             // post image
 
-            Image(.batman2)
+            Image(post.imageUrl)
                 .resizable()
                 .scaledToFill()
                 .frame(height: 400)
@@ -65,7 +70,7 @@ struct FeedCell: View {
 
             // likes label
 
-            Text("233 likes")
+            Text("^[\(post.likes) like](inflect: true)")
                 .font(.footnote)
                 .fontWeight(.semibold)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -75,8 +80,8 @@ struct FeedCell: View {
             // caption label
 
             HStack {
-                Text("batman").fontWeight(.semibold) +
-                Text("This is some test caption for now")
+                Text("\(post.user?.userName ?? "") ").fontWeight(.semibold) +
+                Text(post.caption)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .font(.footnote)
@@ -94,5 +99,5 @@ struct FeedCell: View {
 }
 
 #Preview {
-    FeedCell()
+    FeedCell(post: Post.mockPosts[0])
 }
