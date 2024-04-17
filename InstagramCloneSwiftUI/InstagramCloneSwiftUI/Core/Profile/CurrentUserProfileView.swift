@@ -8,17 +8,12 @@
 import SwiftUI
 
 struct CurrentUserProfileView: View {
-
-
-    private let gridItems: [GridItem] = [
-        .init(.flexible(), spacing: 1),
-        .init(.flexible(), spacing: 1),
-        .init(.flexible(), spacing: 1)
-    ]
     
+    let user: User
+
     var body: some View {
         NavigationStack {
-            ProfileView(user: User.mockUsers[0])
+            ProfileView(user: user)
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -36,5 +31,5 @@ struct CurrentUserProfileView: View {
 }
 
 #Preview {
-    CurrentUserProfileView()
+    CurrentUserProfileView(user: User.mockUsers[0])
 }
