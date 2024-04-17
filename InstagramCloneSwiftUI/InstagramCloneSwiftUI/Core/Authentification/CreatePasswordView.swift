@@ -1,5 +1,5 @@
 //
-//  CreateUserNameView.swift
+//  CreatePasswordView.swift
 //  InstagramCloneSwiftUI
 //
 //  Created by Oleksandr Isaiev on 17.04.2024.
@@ -7,31 +7,30 @@
 
 import SwiftUI
 
-struct CreateUserNameView: View {
-    
-    @State private var userName = ""
+struct CreatePasswordView: View {
+    @State private var password = ""
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         VStack(spacing: 12) {
-            Text("Create user name")
+            Text("Create a password")
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.top)
 
-            Text("You'll use this email to sign in to your account")
+            Text("Your password must be at least 6 characters in length")
                 .font(.footnote)
                 .foregroundStyle(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 24)
 
-            TextField("User name", text: $userName)
+            SecureField("Password", text: $password)
                 .textInputAutocapitalization(.none)
                 .modifier(IGTextModifier())
+                .padding(.top)
 
             NavigationLink {
-                CreatePasswordView()
-                    .navigationBarBackButtonHidden()
+//                CreateUserNameView()
             } label: {
                 Text("Next")
                     .font(.subheadline)
@@ -54,10 +53,9 @@ struct CreateUserNameView: View {
                     }
             }
         }
-
     }
 }
 
 #Preview {
-    CreateUserNameView()
+    CreatePasswordView()
 }
