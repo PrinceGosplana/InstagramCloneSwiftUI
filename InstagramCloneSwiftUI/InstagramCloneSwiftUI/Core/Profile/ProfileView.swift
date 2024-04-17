@@ -16,6 +16,13 @@ struct ProfileView: View {
         .init(.flexible(), spacing: 1),
         .init(.flexible(), spacing: 1)
     ]
+
+    private let imageDimension: CGFloat = (UIScreen.main.bounds.width / 3) - 1
+
+    var posts: [Post] {
+        Post.mockPosts.filter({ $0.user?.userName == user.userName})
+    }
+
     var body: some View {
         ScrollView {
             // header
@@ -78,10 +85,12 @@ struct ProfileView: View {
             
             // post grid view
             LazyVGrid(columns: gridItems, spacing: 1) {
-                ForEach(0 ... 15, id: \.self) { index in
-                    Image(.blackPanther1)
+                ForEach(posts) { post in
+                    Image(post.imageUrl)
                         .resizable()
                         .scaledToFill()
+                        .frame(width: imageDimension, height: imageDimension)
+                        .clipped()
                 }
             }
         }
