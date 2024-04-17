@@ -50,12 +50,7 @@ struct LoginView: View {
 
                     } label: {
                         Text("Log in")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .frame(width: 360, height: 44)
-                            .background(Color(UIColor.systemBlue))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .modifier(IGMainButtonModifier())
                     }
                     .padding(.vertical)
 
