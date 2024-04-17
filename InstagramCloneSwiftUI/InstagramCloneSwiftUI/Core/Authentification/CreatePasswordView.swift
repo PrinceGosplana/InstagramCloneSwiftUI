@@ -13,16 +13,8 @@ struct CreatePasswordView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text("Create a password")
-                .font(.title2)
-                .fontWeight(.bold)
-                .padding(.top)
 
-            Text("Your password must be at least 6 characters in length")
-                .font(.footnote)
-                .foregroundStyle(.gray)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 24)
+            TitleLoginFlow(title: "Create a password", subtitle: "Your password must be at least 6 characters in length")
 
             SecureField("Password", text: $password)
                 .textInputAutocapitalization(.none)

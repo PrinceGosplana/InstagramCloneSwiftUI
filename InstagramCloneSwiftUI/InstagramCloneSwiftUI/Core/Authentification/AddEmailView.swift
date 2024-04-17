@@ -14,16 +14,8 @@ struct AddEmailView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text("Add your email")
-                .font(.title2)
-                .fontWeight(.bold)
-                .padding(.top)
 
-            Text("You'll use this email to sign in to your account")
-                .font(.footnote)
-                .foregroundStyle(.gray)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 24)
+            TitleLoginFlow(title: "Add your email", subtitle: "You'll use this email to sign in to your account")
 
             TextField("Email", text: $email)
                 .textInputAutocapitalization(.none)

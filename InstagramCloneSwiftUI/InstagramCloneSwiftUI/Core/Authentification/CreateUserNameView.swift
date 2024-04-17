@@ -14,16 +14,10 @@ struct CreateUserNameView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text("Create user name")
-                .font(.title2)
-                .fontWeight(.bold)
-                .padding(.top)
-
-            Text("You'll use this email to sign in to your account")
-                .font(.footnote)
-                .foregroundStyle(.gray)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 24)
+            TitleLoginFlow(
+                title: "Create user name",
+                subtitle: "You'll use this email to sign in to your account"
+            )
 
             TextField("User name", text: $userName)
                 .textInputAutocapitalization(.none)
