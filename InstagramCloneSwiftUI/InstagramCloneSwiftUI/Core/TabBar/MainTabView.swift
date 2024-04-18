@@ -7,29 +7,36 @@
 
 import SwiftUI
 
+enum SelectedTab {
+    case feed, search, uploadPost, notification, profile
+}
+
 struct MainTabView: View {
+
+    @State private var selectedTab: SelectedTab = .feed
+
     var body: some View {
         TabView {
             FeedView()
-                .tabItem {
-                    Image(systemName: "house")
-                }
+                .onAppear { selectedTab = .feed }
+                .tabItem { Image(systemName: "house") }
+                .tag(SelectedTab.feed)
             SearchView()
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                }
-            Text("Upload Post")
-                .tabItem {
-                    Image(systemName: "plus.square")
-                }
+                .onAppear { selectedTab = .search }
+                .tabItem { Image(systemName: "magnifyingglass") }
+                .tag(SelectedTab.search)
+            UploadPostView(selectedTab: $selectedTab)
+                .onAppear { selectedTab = .uploadPost }
+                .tabItem { Image(systemName: "plus.square") }
+                .tag(SelectedTab.uploadPost)
             Text("Notification")
-                .tabItem {
-                    Image(systemName: "heart")
-                }
+                .onAppear { selectedTab = .notification }
+                .tabItem { Image(systemName: "heart") }
+                .tag(SelectedTab.notification)
             CurrentUserProfileView(user: User.mockUsers[0])
-                .tabItem {
-                    Image(systemName: "person")
-                }
+                .onAppear { selectedTab = .profile }
+                .tabItem { Image(systemName: "person") }
+                .tag(SelectedTab.profile)
         }
         .tint(.black)
     }
