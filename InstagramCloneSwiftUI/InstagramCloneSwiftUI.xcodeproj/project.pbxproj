@@ -50,6 +50,10 @@
 		8AE0EE1F2BD14E9C00CEF6BB /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0EE1E2BD14E9C00CEF6BB /* ContentViewModel.swift */; };
 		8AE0EE222BD155DB00CEF6BB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0EE212BD155DB00CEF6BB /* RegistrationViewModel.swift */; };
 		8AE0EE242BD21E9700CEF6BB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0EE232BD21E9700CEF6BB /* LoginViewModel.swift */; };
+		8AE0EE262BD241B600CEF6BB /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0EE252BD241B500CEF6BB /* EditProfileView.swift */; };
+		8AE0EE282BD24C3100CEF6BB /* EditProfileRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0EE272BD24C3000CEF6BB /* EditProfileRowView.swift */; };
+		8AE0EE2C2BD2503500CEF6BB /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0EE2B2BD2503500CEF6BB /* EditProfileViewModel.swift */; };
+		8AE0EE2E2BD25B1400CEF6BB /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0EE2D2BD25B1400CEF6BB /* ImageUploader.swift */; };
 		8AF5FDC62BCD91310060B17D /* InstagramCloneSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5FDC52BCD91310060B17D /* InstagramCloneSwiftUIApp.swift */; };
 		8AF5FDC82BCD91310060B17D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5FDC72BCD91310060B17D /* ContentView.swift */; };
 		8AF5FDCA2BCD91330060B17D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF5FDC92BCD91330060B17D /* Assets.xcassets */; };
@@ -83,6 +87,10 @@
 		8AE0EE1E2BD14E9C00CEF6BB /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		8AE0EE212BD155DB00CEF6BB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		8AE0EE232BD21E9700CEF6BB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		8AE0EE252BD241B500CEF6BB /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		8AE0EE272BD24C3000CEF6BB /* EditProfileRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRowView.swift; sourceTree = "<group>"; };
+		8AE0EE2B2BD2503500CEF6BB /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		8AE0EE2D2BD25B1400CEF6BB /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		8AF5FDC22BCD91310060B17D /* InstagramCloneSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramCloneSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF5FDC52BCD91310060B17D /* InstagramCloneSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCloneSwiftUIApp.swift; sourceTree = "<group>"; };
 		8AF5FDC72BCD91310060B17D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -179,6 +187,26 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		8AE0EE292BD2500B00CEF6BB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8AE0EE2B2BD2503500CEF6BB /* EditProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8AE0EE2A2BD2501400CEF6BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8AF5FDE12BCE5A150060B17D /* ProfileView.swift */,
+				8AE0EDE32BD0131000CEF6BB /* CurrentUserProfileView.swift */,
+				8AE0EDE92BD023C700CEF6BB /* ProfileHeader.swift */,
+				8AE0EE252BD241B500CEF6BB /* EditProfileView.swift */,
+				8AE0EE272BD24C3000CEF6BB /* EditProfileRowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8AF5FDB92BCD91310060B17D = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +288,7 @@
 		8AF5FDD72BCE58070060B17D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8AE0EE2D2BD25B1400CEF6BB /* ImageUploader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -277,9 +306,8 @@
 		8AF5FDD92BCE587D0060B17D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				8AF5FDE12BCE5A150060B17D /* ProfileView.swift */,
-				8AE0EDE32BD0131000CEF6BB /* CurrentUserProfileView.swift */,
-				8AE0EDE92BD023C700CEF6BB /* ProfileHeader.swift */,
+				8AE0EE2A2BD2501400CEF6BB /* View */,
+				8AE0EE292BD2500B00CEF6BB /* ViewModel */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -428,19 +456,23 @@
 				8AB64A322BCFDF0F006B1F43 /* TitleLoginFlow.swift in Sources */,
 				8AE0EDEC2BD0F44A00CEF6BB /* UploadPostView.swift in Sources */,
 				8AB64A2A2BCFD844006B1F43 /* CreateUserNameView.swift in Sources */,
+				8AE0EE2E2BD25B1400CEF6BB /* ImageUploader.swift in Sources */,
 				8AB64A302BCFDCCC006B1F43 /* CompleteSignInView.swift in Sources */,
 				8AF5FDC82BCD91310060B17D /* ContentView.swift in Sources */,
 				8AE0EE242BD21E9700CEF6BB /* LoginViewModel.swift in Sources */,
 				8AB64A242BCFACB1006B1F43 /* LoginView.swift in Sources */,
 				8AE0EE222BD155DB00CEF6BB /* RegistrationViewModel.swift in Sources */,
 				8AE0EE1F2BD14E9C00CEF6BB /* ContentViewModel.swift in Sources */,
+				8AE0EE2C2BD2503500CEF6BB /* EditProfileViewModel.swift in Sources */,
 				8AE0EDE22BCFF7BF00CEF6BB /* User.swift in Sources */,
 				8AE0EDE82BD0224300CEF6BB /* PostGridView.swift in Sources */,
+				8AE0EE262BD241B600CEF6BB /* EditProfileView.swift in Sources */,
 				8AF5FDC62BCD91310060B17D /* InstagramCloneSwiftUIApp.swift in Sources */,
 				8AB64A262BCFBA3D006B1F43 /* AddEmailView.swift in Sources */,
 				8AB64A2E2BCFDBEE006B1F43 /* IGMainButtonModifier.swift in Sources */,
 				8AB64A282BCFD29F006B1F43 /* IGTextModifier.swift in Sources */,
 				8AE0EE1B2BD13CF400CEF6BB /* AuthService.swift in Sources */,
+				8AE0EE282BD24C3100CEF6BB /* EditProfileRowView.swift in Sources */,
 				8AB64A222BCF849D006B1F43 /* SearchView.swift in Sources */,
 				8AE0EDEA2BD023C700CEF6BB /* ProfileHeader.swift in Sources */,
 				8AB649C42BCE606C006B1F43 /* UserStatView.swift in Sources */,
