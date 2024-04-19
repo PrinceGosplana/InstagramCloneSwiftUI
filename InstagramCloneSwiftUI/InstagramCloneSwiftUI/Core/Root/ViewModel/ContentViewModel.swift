@@ -9,7 +9,6 @@ import SwiftUI
 import Firebase
 import Combine
 
-@MainActor
 final class ContentViewModel: ObservableObject {
 
     private let service = AuthService.shared

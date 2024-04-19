@@ -6,6 +6,8 @@
 //
 
 import FirebaseAuth
+import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 protocol AuthServiceProtocol {
     func login(withEmail email: String, password: String) async throws
@@ -24,14 +26,24 @@ final class AuthService: AuthServiceProtocol {
         self.userSession = Auth.auth().currentUser
     }
 
+    @MainActor
     func login(withEmail email: String, password: String) async throws {
-
+        do {
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            userSession = result.user
+        } catch {
+            print("Failed to log user with error \(error.localizedDescription)")
+        }
     }
 
+    @MainActor
     func createUser(email: String, password: String, userName: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            self.userSession = result.user
+            userSession = result.user
+            print("DEBUG: Did create user...")
+            await uploadUserData(uid: result.user.uid, userName: userName, email: email)
+            print("DEBUG: Did upload user data...")
         } catch {
             print("Failed to register user with error \(error.localizedDescription)")
         }
@@ -42,6 +54,22 @@ final class AuthService: AuthServiceProtocol {
     }
 
     func signOut() {
+        try? Auth.auth().signOut()
+        userSession = nil
+    }
 
+    private func uploadUserData(uid: String, userName: String, email: String) async {
+        let user = User(
+            id: uid,
+            userName: userName,
+            profileImageUrl: nil,
+            fullName: nil,
+            bio: nil,
+            email: email
+        )
+
+        guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
+
+        try? await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
     }
 }
