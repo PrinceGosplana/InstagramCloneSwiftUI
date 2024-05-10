@@ -9,7 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
 
-    @StateObject var viewModel = LoginViewModel()
+    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var authDataStore: AuthDataStore
 
     var body: some View {
         NavigationStack {
@@ -26,11 +27,11 @@ struct LoginView: View {
 
                     // text fields
                     VStack {
-                        TextField("Enter you email", text: $viewModel.email)
+                        TextField("Enter you email", text: $authDataStore.email)
                             .textInputAutocapitalization(.none)
                             .modifier(IGTextModifier())
 
-                        SecureField("Enter you password", text: $viewModel.password)
+                        SecureField("Enter you password", text: $authDataStore.password)
                             .modifier(IGTextModifier())
                     }
 
@@ -46,7 +47,7 @@ struct LoginView: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
 
                     Button {
-                        Task { try await viewModel.signIn() }
+                        login()
                     } label: {
                         Text("Log in")
                             .modifier(IGMainButtonModifier())
@@ -100,8 +101,19 @@ struct LoginView: View {
             })
         }
     }
+
+    private func login() {
+        Task {
+            await authManager.login(
+                withEmail: authDataStore.email,
+                password: authDataStore.password
+            )
+        }
+    }
 }
 
 #Preview {
     LoginView()
+        .environmentObject(AuthManager(service: MockAuthService()))
+        .environmentObject(AuthDataStore())
 }

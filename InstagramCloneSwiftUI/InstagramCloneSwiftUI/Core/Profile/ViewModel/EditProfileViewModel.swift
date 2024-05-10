@@ -7,7 +7,7 @@
 
 import PhotosUI
 import SwiftUI
-import Firebase
+//import Firebase
 
 @MainActor
 final class EditProfileViewModel: ObservableObject {
@@ -53,8 +53,8 @@ final class EditProfileViewModel: ObservableObject {
             data["bio"] = bio
         }
 
-        if !data.isEmpty {
-            try await Firestore.firestore().collection("users").document(user.id).updateData(data)
-        }
+//        if !data.isEmpty {
+//            try await Firestore.firestore().collection("users").document(user.id).updateData(data)
+//        }
     }
 }

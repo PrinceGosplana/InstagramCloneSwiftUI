@@ -10,7 +10,8 @@ import SwiftUI
 struct CreateUserNameView: View {
     
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var viewModel: RegistrationViewModel
+    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var authDataStore: AuthDataStore
 
     var body: some View {
         VStack(spacing: 12) {
@@ -19,7 +20,7 @@ struct CreateUserNameView: View {
                 subtitle: "You'll use this email to sign in to your account"
             )
 
-            TextField("User name", text: $viewModel.userName)
+            TextField("User name", text: $authDataStore.fullName)
                 .textInputAutocapitalization(.none)
                 .modifier(IGTextModifier())
 
@@ -49,4 +50,6 @@ struct CreateUserNameView: View {
 
 #Preview {
     CreateUserNameView()
+        .environmentObject(AuthManager(service: MockAuthService()))
+        .environmentObject(AuthDataStore())
 }

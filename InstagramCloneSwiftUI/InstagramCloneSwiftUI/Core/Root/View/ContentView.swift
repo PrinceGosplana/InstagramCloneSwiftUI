@@ -10,13 +10,13 @@ import SwiftUI
 struct ContentView: View {
 
     @StateObject var viewModel = ContentViewModel()
-    @StateObject var registrationViewModel = RegistrationViewModel()
+    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         Group {
-            if viewModel.userSession == nil {
+            if authManager.currentUser == nil {
                 LoginView()
-                    .environmentObject(registrationViewModel)
+                    .environmentObject(AuthDataStore())
             } else {
                 MainTabView()
             }
@@ -26,4 +26,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(AuthManager(service: MockAuthService()))
 }

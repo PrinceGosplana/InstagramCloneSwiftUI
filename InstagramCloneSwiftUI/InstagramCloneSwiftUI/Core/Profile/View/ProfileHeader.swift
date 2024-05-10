@@ -11,6 +11,7 @@ struct ProfileHeader: View {
 
     let user: User
     @State private var showEditProfile = false
+    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
         VStack(spacing: 10) {
@@ -55,23 +56,22 @@ struct ProfileHeader: View {
             // action button
             
             Button {
-                showEditProfile.toggle()
-//                if user.isCurrentUser {
-//                    showEditProfile.toggle()
-//                } else {
-//                    // follow
-//                }
+                if authManager.isCurrentUser(user) {
+                    showEditProfile.toggle()
+                } else {
+                    // follow
+                }
             } label: {
-                Text(user.isCurrentUser ? "Edit Profile" : "Follow")
+                Text(authManager.isCurrentUser(user) ? "Edit Profile" : "Follow")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .frame(width: 360, height: 32)
-                    .background(user.isCurrentUser ? .white : Color(UIColor.systemBlue))
-                    .foregroundStyle(user.isCurrentUser ? .black : .white)
+                    .background(authManager.isCurrentUser(user) ? .white : Color(UIColor.systemBlue))
+                    .foregroundStyle(authManager.isCurrentUser(user) ? .black : .white)
                     .clipShape(RoundedRectangle(cornerRadius: 6))
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke(user.isCurrentUser ?  Color.gray : .clear, lineWidth: 1)
+                            .stroke(authManager.isCurrentUser(user) ?  Color.gray : .clear, lineWidth: 1)
                     )
             }
             Divider()
@@ -84,4 +84,5 @@ struct ProfileHeader: View {
 
 #Preview {
     ProfileHeader(user: User.mockUsers[0])
+        .environmentObject(AuthManager(service: MockAuthService()))
 }

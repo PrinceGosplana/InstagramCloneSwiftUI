@@ -10,14 +10,15 @@ import SwiftUI
 struct AddEmailView: View {
 
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var viewModel: RegistrationViewModel
+    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var authDataStore: AuthDataStore
 
     var body: some View {
         VStack(spacing: 12) {
 
             TitleLoginFlow(title: "Add your email", subtitle: "You'll use this email to sign in to your account")
 
-            TextField("Email", text: $viewModel.email)
+            TextField("Email", text: $authDataStore.email)
                 .textInputAutocapitalization(.none)
                 .modifier(IGTextModifier())
 
@@ -46,4 +47,6 @@ struct AddEmailView: View {
 
 #Preview {
     AddEmailView()
+        .environmentObject(AuthManager(service: MockAuthService()))
+        .environmentObject(AuthDataStore())
 }

@@ -10,14 +10,15 @@ import SwiftUI
 struct CompleteSignInView: View {
 
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var viewModel: RegistrationViewModel
+    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var authDataStore: AuthDataStore
 
     var body: some View {
         VStack(spacing: 12) {
 
             Spacer()
             
-            Text("Welcome to Instagram, \(viewModel.userName)")
+            Text("Welcome to Instagram, \(authDataStore.fullName)")
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.top)
@@ -29,7 +30,7 @@ struct CompleteSignInView: View {
                 .padding(.horizontal, 24)
 
             Button {
-                Task { try await viewModel.createUser() }
+                registerUser()
             } label: {
                 Text("Complete Sign Up")
                     .modifier(IGMainButtonModifier())
@@ -48,8 +49,20 @@ struct CompleteSignInView: View {
             }
         }
     }
+
+    private func registerUser() {
+        Task {
+            await authManager.registerUser(
+                email: authDataStore.email,
+                password: authDataStore.password,
+                fullName: authDataStore.fullName
+            )
+        }
+    }
 }
 
 #Preview {
     CompleteSignInView()
+        .environmentObject(AuthManager(service: MockAuthService()))
+        .environmentObject(AuthDataStore())
 }

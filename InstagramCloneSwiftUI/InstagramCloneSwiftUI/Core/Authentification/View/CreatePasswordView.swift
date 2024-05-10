@@ -10,14 +10,15 @@ import SwiftUI
 struct CreatePasswordView: View {
 
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var viewModel: RegistrationViewModel
+    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var authDataStore: AuthDataStore
 
     var body: some View {
         VStack(spacing: 12) {
 
             TitleLoginFlow(title: "Create a password", subtitle: "Your password must be at least 6 characters in length")
 
-            SecureField("Password", text: $viewModel.password)
+            SecureField("Password", text: $authDataStore.password)
                 .textInputAutocapitalization(.none)
                 .modifier(IGTextModifier())
                 .padding(.top)
@@ -47,4 +48,6 @@ struct CreatePasswordView: View {
 
 #Preview {
     CreatePasswordView()
+        .environmentObject(AuthManager(service: MockAuthService()))
+        .environmentObject(AuthDataStore())
 }

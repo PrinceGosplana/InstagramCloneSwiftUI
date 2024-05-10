@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CurrentUserProfileView: View {
     
+    @EnvironmentObject var authManager: AuthManager
     let user: User
 
     var body: some View {
@@ -19,7 +20,7 @@ struct CurrentUserProfileView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        AuthService.shared.signOut()
+                        Task { await authManager.signOut() }
                     } label: {
                         Image(systemName: "line.3.horizontal")
                             .foregroundStyle(.black)
@@ -32,4 +33,5 @@ struct CurrentUserProfileView: View {
 
 #Preview {
     CurrentUserProfileView(user: User.mockUsers[0])
+        .environmentObject(AuthManager(service: MockAuthService()))
 }
