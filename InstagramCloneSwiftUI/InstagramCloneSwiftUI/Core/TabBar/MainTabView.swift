@@ -13,6 +13,7 @@ enum SelectedTab {
 
 struct MainTabView: View {
 
+    let user: User
     @State private var selectedTab: SelectedTab = .feed
 
     var body: some View {
@@ -33,7 +34,7 @@ struct MainTabView: View {
                 .onAppear { selectedTab = .notification }
                 .tabItem { Image(systemName: "heart") }
                 .tag(SelectedTab.notification)
-            CurrentUserProfileView(user: User.mockUsers[0])
+            CurrentUserProfileView(user: user)
                 .onAppear { selectedTab = .profile }
                 .tabItem { Image(systemName: "person") }
                 .tag(SelectedTab.profile)
@@ -43,5 +44,5 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView()
+    MainTabView(user: User.mockUsers[1])
 }

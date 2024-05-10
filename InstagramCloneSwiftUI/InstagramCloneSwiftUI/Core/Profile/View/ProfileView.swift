@@ -12,7 +12,7 @@ struct ProfileView: View {
     let user: User
     
     var posts: [Post] {
-        Post.mockPosts.filter({ $0.user?.userName == user.userName})
+        Post.mockPosts.filter({ $0.user?.id == user.id})
     }
 
     var body: some View {
@@ -29,5 +29,6 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(user: User.mockUsers[0])
+    ProfileView(user: User.mockUsers[1])
+        .environmentObject(AuthManager(service: MockAuthService()))
 }

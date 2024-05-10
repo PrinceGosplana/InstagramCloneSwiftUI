@@ -17,8 +17,8 @@ struct ContentView: View {
             if authManager.currentUser == nil {
                 LoginView()
                     .environmentObject(AuthDataStore())
-            } else {
-                MainTabView()
+            } else if let currentUser = authManager.currentUser {
+                MainTabView(user: currentUser)
             }
         }
     }

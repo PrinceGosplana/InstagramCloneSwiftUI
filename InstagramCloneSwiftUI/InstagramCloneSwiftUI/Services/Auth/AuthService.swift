@@ -12,25 +12,24 @@
 
 actor AuthService: AuthServiceProtocol {
 
-    private var user: User?
-
     static let shared = AuthService()
-
+    private let mockUser = User.mockUsers[1]
     func login(withEmail email: String, password: String) async throws -> User {
 
         var user = User.mockUsers.filter { $0.email == email }.first
         if user == nil {
+
             return User(
-                id: "BC0B7A87-B914-47AA-A4A5-E37294CF236E",
-                userName: User.mockUsers[0].userName ,
-                profileImageUrl: User.mockUsers[0].profileImageUrl,
-                fullName: User.mockUsers[0].fullName,
-                bio: User.mockUsers[0].bio,
+                id: mockUser.id,
+                userName: mockUser.userName ,
+                profileImageUrl: mockUser.profileImageUrl,
+                fullName: mockUser.fullName,
+                bio: mockUser.bio,
                 email: email
             )
         }
-        user?.email = email.isEmpty ? User.mockUsers[0].email : email
-        guard let user else { return User.mockUsers[0] }
+        user?.email = email.isEmpty ? mockUser.email : email
+        guard let user else { return mockUser }
         return user
     }
 
@@ -38,17 +37,17 @@ actor AuthService: AuthServiceProtocol {
         var user = User.mockUsers.filter { $0.email == email }.first
         if user == nil {
             return User(
-                id: "BC0B7A87-B914-47AA-A4A5-E37294CF236E",
-                userName: fullName.isEmpty ? User.mockUsers[0].userName : fullName,
-                profileImageUrl: "batman-2",
-                fullName: fullName.isEmpty ? User.mockUsers[0].userName : fullName,
+                id: mockUser.id,
+                userName: fullName.isEmpty ? mockUser.userName : fullName,
+                profileImageUrl: mockUser.profileImageUrl,
+                fullName: fullName.isEmpty ? mockUser.userName : fullName,
                 bio: "Gotham's Dark Knight",
-                email: email.isEmpty ? User.mockUsers[0].email : email
+                email: email.isEmpty ? mockUser.email : email
             )
         }
-        user?.fullName = fullName.isEmpty ? User.mockUsers[0].userName : fullName
-        user?.email = email.isEmpty ? User.mockUsers[0].email : email
-        guard let user else { return User.mockUsers[0] }
+        user?.fullName = fullName.isEmpty ? mockUser.userName : fullName
+        user?.email = email.isEmpty ? mockUser.email : email
+        guard let user else { return mockUser }
         return user
     }
 
@@ -57,7 +56,6 @@ actor AuthService: AuthServiceProtocol {
     }
 
     func signOut() async throws {
-//        try? Auth.auth().signOut()
-        user = nil
+        //        try? Auth.auth().signOut()
     }
 }

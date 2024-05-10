@@ -16,10 +16,6 @@ struct User: Identifiable, Codable, Hashable {
     var bio: String?
     var email: String
 
-//    var isCurrentUser: Bool {
-//        guard let currentUid = Auth.auth().currentUser?.uid else { return false }
-//        return currentUid == id
-//    }
 }
 
 extension User {
