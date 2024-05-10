@@ -14,16 +14,15 @@ struct UploadPostView: View {
     @State private var imagePickerPresented = false
     @StateObject var viewModel = UploadPostViewModel()
     @Binding var selectedTab: SelectedTab
+    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var postsManager: PostManager
 
     var body: some View {
         VStack {
             // action tool bar
             HStack {
                 Button {
-                    caption = ""
-                    viewModel.selectedImage = nil
-                    viewModel.postImage = nil
-                    selectedTab = .feed
+                   clearPostDataAndReturnToFeed()
                 } label: {
                     Text("Cancel")
                 }
@@ -36,7 +35,10 @@ struct UploadPostView: View {
                 Spacer()
 
                 Button {
-
+                    Task {
+                        try await viewModel.uploadPost(from: authManager.currentUser, caption: caption)
+                        clearPostDataAndReturnToFeed()
+                    }
                 } label: {
                     Text("Upload")
                         .fontWeight(.semibold)
@@ -64,9 +66,21 @@ struct UploadPostView: View {
             imagePickerPresented.toggle()
         }
         .photosPicker(isPresented: $imagePickerPresented, selection: $viewModel.selectedImage)
+        .onChange(of: viewModel.newPost) { _, _ in
+            guard let newPost = viewModel.newPost else { return }
+            Task { await postsManager.uploadPost(newPost) }
+        }
+    }
+
+    func clearPostDataAndReturnToFeed() {
+        caption = ""
+        viewModel.selectedImage = nil
+        viewModel.postImage = nil
+        selectedTab = .feed
     }
 }
 
 #Preview {
     UploadPostView(selectedTab: .constant(SelectedTab.uploadPost))
+        .environmentObject(AuthManager(service: MockAuthService()))
 }

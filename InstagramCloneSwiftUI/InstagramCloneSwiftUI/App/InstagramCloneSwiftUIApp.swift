@@ -22,11 +22,13 @@ import SwiftUI
 struct InstagramCloneSwiftUIApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var authManager = AuthManager(service: AuthService())
+    @StateObject var postsManager = PostManager(service: PostsService.shared)
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(authManager)
+                .environmentObject(postsManager)
         }
     }
 }

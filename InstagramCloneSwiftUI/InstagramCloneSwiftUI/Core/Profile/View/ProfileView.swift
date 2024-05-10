@@ -9,19 +9,19 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    let user: User
-    
-    var posts: [Post] {
-        Post.mockPosts.filter({ $0.user?.id == user.id})
+    @StateObject var viewModel: ProfileViewModel
+
+    init(user: User) {
+        self._viewModel = StateObject(wrappedValue: ProfileViewModel(user: user))
     }
 
     var body: some View {
         ScrollView {
             // header
-            ProfileHeader(user: user)
+            ProfileHeader(user: viewModel.user)
 
             // post grid view
-            PostGridView(posts: posts)
+            PostGridView(posts: viewModel.posts)
         }
         .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)
@@ -30,5 +30,4 @@ struct ProfileView: View {
 
 #Preview {
     ProfileView(user: User.mockUsers[1])
-        .environmentObject(AuthManager(service: MockAuthService()))
 }
