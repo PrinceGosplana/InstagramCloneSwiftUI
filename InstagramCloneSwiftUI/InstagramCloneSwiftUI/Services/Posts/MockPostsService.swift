@@ -16,7 +16,7 @@ actor MockPostsService: PostsServiceProtocol {
     }
 
     func fetchUsersPosts(user: User) async throws -> [Post] {
-        posts.filter({ $0.user?.id == user.id})
+        posts.filter({ $0.ownerUid == user.id})
     }
 
     func uploadPost(user: User, post: Post) async throws {

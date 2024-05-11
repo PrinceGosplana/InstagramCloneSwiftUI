@@ -190,6 +190,26 @@
 			path = Posts;
 			sourceTree = "<group>";
 		};
+		8A329D802BEF815C00EA7CF8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A25BAB22BEDFFF300D7EBE2 /* CircularImage.swift */,
+				8AE0EDE72BD0224300CEF6BB /* PostGridView.swift */,
+				8AB64A312BCFDF0F006B1F43 /* TitleLoginFlow.swift */,
+				8AB649C32BCE606C006B1F43 /* UserStatView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A329D812BEF817200EA7CF8 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				8AB64A272BCFD29F006B1F43 /* IGTextModifier.swift */,
+				8AB64A2D2BCFDBEE006B1F43 /* IGMainButtonModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		8A3FD9762BD3AC9C00FE5358 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,12 +220,8 @@
 		8AB649C22BCE604B006B1F43 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				8AB649C32BCE606C006B1F43 /* UserStatView.swift */,
-				8AB64A272BCFD29F006B1F43 /* IGTextModifier.swift */,
-				8AB64A2D2BCFDBEE006B1F43 /* IGMainButtonModifier.swift */,
-				8AB64A312BCFDF0F006B1F43 /* TitleLoginFlow.swift */,
-				8AE0EDE72BD0224300CEF6BB /* PostGridView.swift */,
-				8A25BAB22BEDFFF300D7EBE2 /* CircularImage.swift */,
+				8A329D812BEF817200EA7CF8 /* Modifiers */,
+				8A329D802BEF815C00EA7CF8 /* View */,
 			);
 			path = Components;
 			sourceTree = "<group>";

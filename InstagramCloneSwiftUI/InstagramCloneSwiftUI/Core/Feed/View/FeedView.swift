@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FeedView: View {
 
-    @StateObject var viewModel = FeedViewModel()
     @EnvironmentObject var postManager: PostManager
 
     var body: some View {
