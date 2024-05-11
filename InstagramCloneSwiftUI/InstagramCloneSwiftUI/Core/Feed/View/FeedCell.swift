@@ -78,12 +78,14 @@ struct FeedCell: View {
 
             // likes label
 
-            Text("^[\(post.likes) like](inflect: true)")
-                .font(.footnote)
-                .fontWeight(.semibold)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 10)
-                .padding(.top, 1)
+            if post.likes > 0 {
+                Text("^[\(post.likes) like](inflect: true)")
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 10)
+                    .padding(.top, 1)
+            }
 
             // caption label
 
@@ -106,12 +108,10 @@ struct FeedCell: View {
     }
 
     private func handleLikeTapped() {
-        Task {
-            if didLike {
-                try await viewModel.unlike()
-            } else {
-                try await viewModel.like()
-            }
+        if didLike {
+            viewModel.unlike()
+        } else {
+            viewModel.like()
         }
     }
 }

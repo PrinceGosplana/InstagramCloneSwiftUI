@@ -15,12 +15,12 @@ final class FeedCellViewModel: ObservableObject {
         self.post = post
     }
 
-    func like() async throws {
+    func like() {
         post.didLike = true
         post.likes += 1
     }
 
-    func unlike() async throws {
+    func unlike() {
         post.didLike = false
         post.likes -= 1
     }
