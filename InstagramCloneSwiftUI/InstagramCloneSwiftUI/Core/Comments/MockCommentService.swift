@@ -9,7 +9,11 @@ import Foundation
 
 actor MockCommentService: CommentServiceProtocol {
 
-    static func uploadComment(_ comment: Comment, postId: String) async throws {
+    func uploadComment(_ comment: Comment) async throws {
 
+    }
+
+    func fetchComments() async throws -> [Comment] {
+        [Comment.mockComment].sorted { $0.date > $1.date }
     }
 }

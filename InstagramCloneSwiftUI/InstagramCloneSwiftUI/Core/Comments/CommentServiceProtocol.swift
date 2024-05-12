@@ -8,5 +8,6 @@
 import Foundation
 
 protocol CommentServiceProtocol {
-    static func uploadComment(_ comment: Comment, postId: String) async throws
+    func uploadComment(_ comment: Comment) async throws
+    func fetchComments() async throws -> [Comment]
 }

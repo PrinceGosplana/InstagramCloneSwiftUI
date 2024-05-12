@@ -17,3 +17,15 @@ struct Comment: Identifiable, Codable {
 
     var user: User?
 }
+
+extension Comment {
+    static let mockComment = Comment(
+        id: "123",
+        postOwnerId: "Test post owner",
+        commentText: "Test comment for now",
+        postId: "3214",
+        date: Date(),
+        commentOwnerUid: "BC0B7A87-B914-47AA-A4A5-E37294CF236E",
+        user: nil
+    )
+}

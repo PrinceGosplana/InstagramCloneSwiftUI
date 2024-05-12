@@ -12,4 +12,8 @@ struct UserService {
     static func fetchAllUsers() async throws -> [User] {
         User.mockUsers
     }
+
+    static func fetchUser(withUid uid: String) async throws -> User{
+        User.mockUsers[0]
+    }
 }
