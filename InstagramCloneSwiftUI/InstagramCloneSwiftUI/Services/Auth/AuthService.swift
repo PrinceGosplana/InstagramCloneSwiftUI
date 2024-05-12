@@ -13,7 +13,8 @@
 actor AuthService: AuthServiceProtocol {
 
     static let shared = AuthService()
-    private let mockUser = User.mockUsers[1]
+    private var mockUser: User { User.mockUsers[1] }
+
     func login(withEmail email: String, password: String) async throws -> User {
 
         var user = User.mockUsers.filter { $0.email == email }.first

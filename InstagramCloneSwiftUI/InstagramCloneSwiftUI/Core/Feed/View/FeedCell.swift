@@ -9,10 +9,10 @@ import SwiftUI
 
 struct FeedCell: View {
 
+    @State private var showComments = false
     @ObservedObject var viewModel: FeedCellViewModel
-    private var post: Post {
-        viewModel.post
-    }
+
+    private var post: Post { viewModel.post }
 
     private var didLike: Bool {
         post.didLike ?? false
@@ -57,7 +57,7 @@ struct FeedCell: View {
                 }
 
                 Button {
-
+                    showComments.toggle()
                 } label: {
                     Image(systemName: "bubble.right")
                         .imageScale(.large)
@@ -104,6 +104,10 @@ struct FeedCell: View {
                 .padding(.leading, 10)
                 .padding(.top, 1)
                 .foregroundStyle(.gray)
+        }
+        .sheet(isPresented: $showComments) {
+            CommentCell()
+                .presentationDragIndicator(.visible)
         }
     }
 
