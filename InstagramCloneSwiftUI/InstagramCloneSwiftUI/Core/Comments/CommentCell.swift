@@ -9,15 +9,19 @@ import SwiftUI
 
 struct CommentCell: View {
 
-    private var mockUser: User { User.mockUsers[0] }
+    private let user: User
 
+    init(user: User) {
+        self.user = user
+    }
+    
     var body: some View {
         HStack {
-            CircularImage(user: User.mockUsers[0], size: .xSmall)
+            CircularImage(user: user, size: .xSmall)
 
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 2) {
-                    Text(mockUser.userName)
+                    Text(user.userName)
                         .fontWeight(.semibold)
 
                     Text("6d")
@@ -34,5 +38,5 @@ struct CommentCell: View {
 }
 
 #Preview {
-    CommentCell()
+    CommentCell(user: User.mockUsers[0])
 }

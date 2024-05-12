@@ -22,6 +22,11 @@
 		8A329D872BEFA16000EA7CF8 /* FeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D862BEFA16000EA7CF8 /* FeedCellViewModel.swift */; };
 		8A329D8E2BF0A28800EA7CF8 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D8D2BF0A28800EA7CF8 /* Comments.swift */; };
 		8A329D902BF0A29100EA7CF8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D8F2BF0A29100EA7CF8 /* CommentCell.swift */; };
+		8A329D922BF0AE5B00EA7CF8 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D912BF0AE5B00EA7CF8 /* Comment.swift */; };
+		8A329D942BF0AF3400EA7CF8 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D932BF0AF3400EA7CF8 /* CommentService.swift */; };
+		8A329D962BF0AF4C00EA7CF8 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D952BF0AF4C00EA7CF8 /* CommentsViewModel.swift */; };
+		8A329D992BF0B51600EA7CF8 /* CommentServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D982BF0B51600EA7CF8 /* CommentServiceProtocol.swift */; };
+		8A329D9B2BF0B5B600EA7CF8 /* MockCommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D9A2BF0B5B600EA7CF8 /* MockCommentService.swift */; };
 		8AB649C42BCE606C006B1F43 /* UserStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C32BCE606C006B1F43 /* UserStatView.swift */; };
 		8AB649C62BCE687F006B1F43 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C52BCE687F006B1F43 /* FeedView.swift */; };
 		8AB649C82BCE6888006B1F43 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C72BCE6888006B1F43 /* FeedCell.swift */; };
@@ -72,6 +77,11 @@
 		8A329D862BEFA16000EA7CF8 /* FeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellViewModel.swift; sourceTree = "<group>"; };
 		8A329D8D2BF0A28800EA7CF8 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		8A329D8F2BF0A29100EA7CF8 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		8A329D912BF0AE5B00EA7CF8 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		8A329D932BF0AF3400EA7CF8 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		8A329D952BF0AF4C00EA7CF8 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		8A329D982BF0B51600EA7CF8 /* CommentServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentServiceProtocol.swift; sourceTree = "<group>"; };
+		8A329D9A2BF0B5B600EA7CF8 /* MockCommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCommentService.swift; sourceTree = "<group>"; };
 		8AB649C32BCE606C006B1F43 /* UserStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatView.swift; sourceTree = "<group>"; };
 		8AB649C52BCE687F006B1F43 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		8AB649C72BCE6888006B1F43 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
@@ -238,6 +248,9 @@
 		8A329D892BF0A24E00EA7CF8 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				8A329D932BF0AF3400EA7CF8 /* CommentService.swift */,
+				8A329D982BF0B51600EA7CF8 /* CommentServiceProtocol.swift */,
+				8A329D9A2BF0B5B600EA7CF8 /* MockCommentService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -245,6 +258,7 @@
 		8A329D8A2BF0A25300EA7CF8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8A329D952BF0AF4C00EA7CF8 /* CommentsViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -261,6 +275,7 @@
 		8A329D8C2BF0A25800EA7CF8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8A329D912BF0AE5B00EA7CF8 /* Comment.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -567,12 +582,14 @@
 				8A329D902BF0A29100EA7CF8 /* CommentCell.swift in Sources */,
 				8AB64A322BCFDF0F006B1F43 /* TitleLoginFlow.swift in Sources */,
 				8AE0EDEC2BD0F44A00CEF6BB /* UploadPostView.swift in Sources */,
+				8A329D962BF0AF4C00EA7CF8 /* CommentsViewModel.swift in Sources */,
 				8A25BAC42BEE3C2400D7EBE2 /* PostsService.swift in Sources */,
 				8A25BACA2BEE42C500D7EBE2 /* ProfileViewModel.swift in Sources */,
 				8AB64A2A2BCFD844006B1F43 /* CreateUserNameView.swift in Sources */,
 				8A25BAB92BEE18BC00D7EBE2 /* SearchViewModel.swift in Sources */,
 				8AE0EE2E2BD25B1400CEF6BB /* ImageUploader.swift in Sources */,
 				8AB64A302BCFDCCC006B1F43 /* CompleteSignInView.swift in Sources */,
+				8A329D992BF0B51600EA7CF8 /* CommentServiceProtocol.swift in Sources */,
 				8AF5FDC82BCD91310060B17D /* ContentView.swift in Sources */,
 				8AB64A242BCFACB1006B1F43 /* LoginView.swift in Sources */,
 				8A25BAC62BEE3C6700D7EBE2 /* MockPostsService.swift in Sources */,
@@ -586,11 +603,14 @@
 				8AE0EE262BD241B600CEF6BB /* EditProfileView.swift in Sources */,
 				8AF5FDC62BCD91310060B17D /* InstagramCloneSwiftUIApp.swift in Sources */,
 				8A25BAAD2BED2ADF00D7EBE2 /* MockAuthService.swift in Sources */,
+				8A329D922BF0AE5B00EA7CF8 /* Comment.swift in Sources */,
 				8AB64A262BCFBA3D006B1F43 /* AddEmailView.swift in Sources */,
 				8AB64A2E2BCFDBEE006B1F43 /* IGMainButtonModifier.swift in Sources */,
 				8AB64A282BCFD29F006B1F43 /* IGTextModifier.swift in Sources */,
 				8A25BAB52BEE173A00D7EBE2 /* UserService.swift in Sources */,
+				8A329D9B2BF0B5B600EA7CF8 /* MockCommentService.swift in Sources */,
 				8AE0EE1B2BD13CF400CEF6BB /* AuthService.swift in Sources */,
+				8A329D942BF0AF3400EA7CF8 /* CommentService.swift in Sources */,
 				8A25BAB32BEDFFF300D7EBE2 /* CircularImage.swift in Sources */,
 				8AE0EE282BD24C3100CEF6BB /* EditProfileRowView.swift in Sources */,
 				8AB64A222BCF849D006B1F43 /* SearchView.swift in Sources */,

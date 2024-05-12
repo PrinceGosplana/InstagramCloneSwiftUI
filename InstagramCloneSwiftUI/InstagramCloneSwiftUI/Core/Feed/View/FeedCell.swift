@@ -106,8 +106,10 @@ struct FeedCell: View {
                 .foregroundStyle(.gray)
         }
         .sheet(isPresented: $showComments) {
-            CommentCell()
-                .presentationDragIndicator(.visible)
+            if let user = post.user {
+                Comments(post: post, user: user)
+                    .presentationDragIndicator(.visible)
+            }
         }
     }
 

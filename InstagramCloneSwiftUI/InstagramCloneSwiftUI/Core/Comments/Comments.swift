@@ -10,8 +10,14 @@ import SwiftUI
 struct Comments: View {
 
     private var mockUser: User { User.mockUsers[0] }
-
+    private var user: User
     @State private var commentText = ""
+    @StateObject var viewModel: CommentsViewModel
+
+    init(post: Post, user: User) {
+        self.user = user
+        self._viewModel = StateObject(wrappedValue: CommentsViewModel(post: post, user: user))
+    }
 
     var body: some View {
         VStack(spacing: 1) {
@@ -25,7 +31,7 @@ struct Comments: View {
             ScrollView {
                 LazyVStack(spacing: 24) {
                     ForEach(Post.mockPosts) { comment in
-                        CommentCell()
+                        CommentCell(user: user)
                     }
                 }
             }
@@ -45,7 +51,7 @@ struct Comments: View {
                         }
 
                     Button {
-
+                        Task { await viewModel.uploadComment(commentText: commentText) }
                     } label: {
                         Text("Post")
                             .font(.subheadline)
@@ -61,5 +67,5 @@ struct Comments: View {
 }
 
 #Preview {
-    Comments()
+    Comments(post: Post.mockPosts[2], user: User.mockUsers[1])
 }
