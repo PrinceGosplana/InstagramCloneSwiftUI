@@ -44,6 +44,9 @@ struct SearchView: View {
             .navigationDestination(for: User.self, destination: { user in
                 ProfileView(user: user)
             })
+            .onAppear {
+                Task { try await viewModel.fetchAllUsers() }
+            }
             .navigationTitle("Explore")
             .navigationBarTitleDisplayMode(.inline)
         }

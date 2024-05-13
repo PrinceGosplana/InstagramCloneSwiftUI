@@ -14,7 +14,7 @@ final class UserService {
 
     static let shared = UserService()
     private var mockUser: User { Constants.currentMockUser }
-
+    private static var users = [User]()
     private init() {}
     
     func fetchCurrentUser() async throws {
@@ -26,7 +26,10 @@ final class UserService {
     }
 
     static func fetchAllUsers() async throws -> [User] {
-        User.mockUsers
+        if users.isEmpty {
+            users.append(contentsOf: User.mockUsers)
+        }
+        return users
     }
 
     static func fetchUser(withUid uid: String) async throws -> User {
@@ -39,14 +42,23 @@ final class UserService {
 
 extension UserService: UserServiceFollowingProtocol {
     static func follow(uid: String) async throws {
-
+        guard let userIndex = userIndex(uid: uid) else { return }
+        users[userIndex].isFollowed = true
     }
 
     static func unfollow(uid: String) async throws {
-
+        guard let userIndex = userIndex(uid: uid) else { return }
+        users[userIndex].isFollowed = false
     }
 
     static func checkIfUserfollow(uid: String) async throws -> Bool {
-        false
+        guard let userIndex = userIndex(uid: uid) else { return false }
+        return users[userIndex].isFollowed ?? false
+    }
+
+    private static func userIndex(uid: String) -> Array<User>.Index? {
+        guard let user = users.filter({ $0.id == uid }).first else { return nil }
+        guard let userIndex = users.firstIndex(of: user) else { return nil }
+        return userIndex
     }
 }
