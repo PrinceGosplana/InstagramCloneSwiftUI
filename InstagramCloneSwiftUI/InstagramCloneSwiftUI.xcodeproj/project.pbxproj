@@ -27,6 +27,7 @@
 		8A329D962BF0AF4C00EA7CF8 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D952BF0AF4C00EA7CF8 /* CommentsViewModel.swift */; };
 		8A329D992BF0B51600EA7CF8 /* CommentServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D982BF0B51600EA7CF8 /* CommentServiceProtocol.swift */; };
 		8A329D9B2BF0B5B600EA7CF8 /* MockCommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D9A2BF0B5B600EA7CF8 /* MockCommentService.swift */; };
+		8A329D9F2BF1ECC200EA7CF8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329D9E2BF1ECC200EA7CF8 /* Constants.swift */; };
 		8AB649C42BCE606C006B1F43 /* UserStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C32BCE606C006B1F43 /* UserStatView.swift */; };
 		8AB649C62BCE687F006B1F43 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C52BCE687F006B1F43 /* FeedView.swift */; };
 		8AB649C82BCE6888006B1F43 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C72BCE6888006B1F43 /* FeedCell.swift */; };
@@ -82,6 +83,7 @@
 		8A329D952BF0AF4C00EA7CF8 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 		8A329D982BF0B51600EA7CF8 /* CommentServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentServiceProtocol.swift; sourceTree = "<group>"; };
 		8A329D9A2BF0B5B600EA7CF8 /* MockCommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCommentService.swift; sourceTree = "<group>"; };
+		8A329D9E2BF1ECC200EA7CF8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8AB649C32BCE606C006B1F43 /* UserStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatView.swift; sourceTree = "<group>"; };
 		8AB649C52BCE687F006B1F43 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		8AB649C72BCE6888006B1F43 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 		8AF5FDD52BCE57F60060B17D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8A329D9E2BF1ECC200EA7CF8 /* Constants.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				8AE0EDE22BCFF7BF00CEF6BB /* User.swift in Sources */,
 				8AE0EDE82BD0224300CEF6BB /* PostGridView.swift in Sources */,
 				8AE0EE262BD241B600CEF6BB /* EditProfileView.swift in Sources */,
+				8A329D9F2BF1ECC200EA7CF8 /* Constants.swift in Sources */,
 				8AF5FDC62BCD91310060B17D /* InstagramCloneSwiftUIApp.swift in Sources */,
 				8A25BAAD2BED2ADF00D7EBE2 /* MockAuthService.swift in Sources */,
 				8A329D922BF0AE5B00EA7CF8 /* Comment.swift in Sources */,

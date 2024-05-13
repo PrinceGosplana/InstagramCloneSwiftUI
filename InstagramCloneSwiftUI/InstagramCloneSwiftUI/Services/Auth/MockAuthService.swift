@@ -12,11 +12,11 @@ actor MockAuthService: AuthServiceProtocol {
     static let shared = MockAuthService()
 
     func login(withEmail email: String, password: String) async throws -> User {
-        User.mockUsers[0]
+        Constants.currentMockUser
     }
 
     func createUser(email: String, password: String, fullName: String) async throws -> User {
-        User.mockUsers[0]
+        Constants.currentMockUser
     }
 
     func loadUserData() async throws { }

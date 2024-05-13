@@ -9,13 +9,15 @@ import SwiftUI
 
 struct Comments: View {
 
-    private var user: User
     @State private var commentText = ""
     @StateObject var viewModel: CommentsViewModel
 
-    init(post: Post, user: User) {
-        self.user = user
-        self._viewModel = StateObject(wrappedValue: CommentsViewModel(post: post, user: user))
+    private var currentUser: User? {
+        UserService.shared.currentUser
+    }
+
+    init(post: Post) {
+        self._viewModel = StateObject(wrappedValue: CommentsViewModel(post: post))
     }
 
     var body: some View {
@@ -37,7 +39,7 @@ struct Comments: View {
 
             Divider()
             HStack(spacing: 12) {
-                CircularImage(user: user, size: .xSmall)
+                CircularImage(user: currentUser, size: .xSmall)
 
                 ZStack(alignment: .trailing) {
                     TextField("Add a comment", text: $commentText, axis: .vertical)
@@ -69,5 +71,5 @@ struct Comments: View {
 }
 
 #Preview {
-    Comments(post: Post.mockPosts[2], user: User.mockUsers[1])
+    Comments(post: Post.mockPosts[2])
 }

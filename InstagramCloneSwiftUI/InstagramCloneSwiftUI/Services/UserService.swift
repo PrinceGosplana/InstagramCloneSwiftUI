@@ -7,13 +7,29 @@
 
 import Foundation
 
-struct UserService {
+final class UserService {
+
+    @Published var currentUser: User?
+
+    static let shared = UserService()
+    private var mockUser: User { Constants.currentMockUser }
+
+    private init() {}
+    
+    func fetchCurrentUser() async throws {
+        currentUser = mockUser
+    }
+
+    func sighOut() async throws {
+        currentUser = nil
+    }
 
     static func fetchAllUsers() async throws -> [User] {
         User.mockUsers
     }
 
-    static func fetchUser(withUid uid: String) async throws -> User{
-        User.mockUsers[0]
+    static func fetchUser(withUid uid: String) async throws -> User {
+        User.mockUsers.filter { $0.id == uid }.first ?? Constants.currentMockUser
     }
+
 }

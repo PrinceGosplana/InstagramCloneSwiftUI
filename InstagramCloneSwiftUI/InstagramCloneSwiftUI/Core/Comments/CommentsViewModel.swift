@@ -10,12 +10,14 @@ import Foundation
 final class CommentsViewModel: ObservableObject {
     @Published var comments = [Comment]()
     private let post: Post
-    private var user: User
     private let service: CommentService
 
-    init(post: Post, user: User) {
+    private var currentUser: User? {
+        UserService.shared.currentUser
+    }
+
+    init(post: Post) {
         self.post = post
-        self.user = user
         self.service = CommentService(postId: post.id)
 
         Task { try await fetchComments() }
@@ -29,8 +31,8 @@ final class CommentsViewModel: ObservableObject {
             commentText: commentText,
             postId: post.id,
             date: Date(),
-            commentOwnerUid: user.id,
-            user: user
+            commentOwnerUid: currentUser?.id ?? "",
+            user: currentUser
         )
         comments.insert(comment, at: 0)
         do {

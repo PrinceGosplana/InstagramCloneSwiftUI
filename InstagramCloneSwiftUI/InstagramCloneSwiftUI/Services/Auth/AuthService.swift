@@ -9,25 +9,22 @@
 //import FirebaseFirestoreSwift
 //import FirebaseFirestore
 
+enum AuthError: Error {
+    case userNotFound
+}
 
 actor AuthService: AuthServiceProtocol {
 
     static let shared = AuthService()
-    private var mockUser: User { User.mockUsers[1] }
+    private var mockUser: User { Constants.currentMockUser }
 
     func login(withEmail email: String, password: String) async throws -> User {
 
         var user = User.mockUsers.filter { $0.email == email }.first
         if user == nil {
-
-            return User(
-                id: mockUser.id,
-                userName: mockUser.userName ,
-                profileImageUrl: mockUser.profileImageUrl,
-                fullName: mockUser.fullName,
-                bio: mockUser.bio,
-                email: email
-            )
+            try await loadUserData()
+            guard let currentUser = UserService.shared.currentUser else { throw AuthError.userNotFound }
+            return currentUser
         }
         user?.email = email.isEmpty ? mockUser.email : email
         guard let user else { return mockUser }
@@ -37,13 +34,17 @@ actor AuthService: AuthServiceProtocol {
     func createUser(email: String, password: String, fullName: String) async throws -> User {
         var user = User.mockUsers.filter { $0.email == email }.first
         if user == nil {
+
+            try await loadUserData()
+            let currentUser = UserService.shared.currentUser
+
             return User(
-                id: mockUser.id,
-                userName: fullName.isEmpty ? mockUser.userName : fullName,
-                profileImageUrl: mockUser.profileImageUrl,
-                fullName: fullName.isEmpty ? mockUser.userName : fullName,
+                id: currentUser?.id ?? "",
+                userName: fullName.isEmpty ? currentUser?.userName ?? fullName : fullName,
+                profileImageUrl: currentUser?.profileImageUrl,
+                fullName: fullName.isEmpty ? currentUser?.userName ?? fullName : fullName,
                 bio: "Gotham's Dark Knight",
-                email: email.isEmpty ? mockUser.email : email
+                email: email.isEmpty ? currentUser?.email ?? email : email
             )
         }
         user?.fullName = fullName.isEmpty ? mockUser.userName : fullName
@@ -53,10 +54,10 @@ actor AuthService: AuthServiceProtocol {
     }
 
     func loadUserData() async throws {
-
+        try await UserService.shared.fetchCurrentUser()
     }
 
     func signOut() async throws {
-        //        try? Auth.auth().signOut()
+        try await UserService.shared.sighOut()
     }
 }
