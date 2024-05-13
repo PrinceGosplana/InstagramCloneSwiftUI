@@ -7,6 +7,9 @@
 
 import Foundation
 
+enum UserServiceErrors: Error {
+    case userNotFound
+}
 
 final class UserService {
 
@@ -60,5 +63,20 @@ extension UserService: UserServiceFollowingProtocol {
         guard let user = users.filter({ $0.id == uid }).first else { return nil }
         guard let userIndex = users.firstIndex(of: user) else { return nil }
         return userIndex
+    }
+}
+
+// MARK: - User Stats
+
+extension UserService {
+    static func fetchUserStats(uid: String) async throws -> UserStats {
+        guard let userIndex = userIndex(uid: uid) else { throw UserServiceErrors.userNotFound }
+        guard let stats = users[userIndex].stats else { throw UserServiceErrors.userNotFound }
+
+        return .init(
+            followingCount: stats.followingCount,
+            followersCount: stats.followersCount,
+            postsCount: stats.postsCount
+        )
     }
 }

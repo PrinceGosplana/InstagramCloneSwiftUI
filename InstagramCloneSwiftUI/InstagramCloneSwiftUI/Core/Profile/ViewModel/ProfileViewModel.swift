@@ -22,6 +22,7 @@ final class ProfileViewModel: ObservableObject {
     init(user: User) {
         self.user = user
         Task { await fetchUserPosts() }
+        Task { await fetchUserStats() }
     }
 
     func fetchUserPosts() async {
@@ -32,6 +33,14 @@ final class ProfileViewModel: ObservableObject {
             }
         } catch {
             print("Error while fetching user's posts \(error.localizedDescription)")
+        }
+    }
+
+    func fetchUserStats() async {
+        do {
+            user.stats = try await UserService.fetchUserStats(uid: user.id)
+        } catch {
+            print("Error while fetching user's stats \(error.localizedDescription)")
         }
     }
 }
