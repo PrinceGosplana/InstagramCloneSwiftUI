@@ -73,9 +73,13 @@ struct ProfileHeader: View {
                     
                     UserStatView(value: stats.postsCount, title: "Posts")
 
-                    UserStatView(value: stats.followersCount, title: "Followers")
+                    NavigationLink(value: UserListConfig.followers(uid: user.id)) {
+                        UserStatView(value: stats.followersCount, title: "Followers")
+                    }
 
-                    UserStatView(value: stats.followingCount, title: "Following")
+                    NavigationLink(value: UserListConfig.following(uid: user.id)) {
+                        UserStatView(value: stats.followingCount, title: "Following")
+                    }
 
                 }
             }
@@ -120,6 +124,9 @@ struct ProfileHeader: View {
             }
             Divider()
         }
+        .navigationDestination(for: UserListConfig.self, destination: { config in
+            
+        })
         .fullScreenCover(isPresented: $showEditProfile, content: {
             EditProfileView(user: user)
         })
