@@ -27,7 +27,7 @@ struct CommentCell: View {
                     Text(user?.userName ?? "")
                         .fontWeight(.semibold)
 
-                    Text("6d")
+                    Text(comment.date.timeToString())
                         .foregroundStyle(.gray)
                 }
 
