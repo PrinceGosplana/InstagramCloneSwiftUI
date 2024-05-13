@@ -19,9 +19,12 @@ struct ProfileView: View {
         ScrollView {
             // header
             ProfileHeader(user: viewModel.user)
+                .task { await viewModel.fetchUserStats() }
+                .task { await viewModel.checkIfUserIsFollow() }
 
             // post grid view
             PostGridView(posts: viewModel.posts)
+                .task { await viewModel.fetchUserPosts() }
         }
         .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)

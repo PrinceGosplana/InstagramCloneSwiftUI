@@ -10,7 +10,7 @@ import Foundation
 protocol ProfileFollowProtocol: AnyObject {
     func follow()
     func unfollow()
-    func checkIfUserIsFollow()
+    func checkIfUserIsFollow() async
 }
 
 @MainActor
@@ -21,8 +21,6 @@ final class ProfileViewModel: ObservableObject {
 
     init(user: User) {
         self.user = user
-        Task { await fetchUserPosts() }
-        Task { await fetchUserStats() }
     }
 
     func fetchUserPosts() async {
@@ -62,7 +60,7 @@ extension ProfileViewModel: ProfileFollowProtocol {
         }
     }
     
-    func checkIfUserIsFollow() {
+    func checkIfUserIsFollow() async {
         Task {
             user.isFollowed = try await UserService.checkIfUserfollow(uid: user.id)
         }
