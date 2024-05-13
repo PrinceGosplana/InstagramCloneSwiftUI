@@ -9,9 +9,53 @@ import SwiftUI
 
 struct ProfileHeader: View {
 
-    let user: User
+    private var user: User {
+        viewModel.user
+    }
+
+    private var isFollowed: Bool {
+        user.isFollowed ?? false
+    }
+
+    private var buttonTitle: String {
+        if authManager.isCurrentUser(user) {
+            "Edit Profile"
+        } else {
+            isFollowed ? "Following" : "Follow"
+        }
+    }
+
+    private var buttonBackgroundColor: Color {
+        if authManager.isCurrentUser(user) || isFollowed {
+            .white
+        } else {
+            Color(.systemBlue)
+        }
+    }
+
+    private var buttonForegroundColor: Color {
+        if authManager.isCurrentUser(user) || isFollowed {
+            .black
+        } else {
+            .white
+        }
+    }
+
+    private var buttonBorderColor: Color {
+        if authManager.isCurrentUser(user) || isFollowed {
+            .gray
+        } else {
+            .clear
+        }
+    }
+
     @State private var showEditProfile = false
+    @ObservedObject var viewModel: ProfileViewModel
     @EnvironmentObject var authManager: AuthManager
+
+    init(user: User) {
+        viewModel = ProfileViewModel(user: user)
+    }
 
     var body: some View {
         VStack(spacing: 10) {
@@ -55,19 +99,19 @@ struct ProfileHeader: View {
                 if authManager.isCurrentUser(user) {
                     showEditProfile.toggle()
                 } else {
-                    // follow
+                    handledFollowTapped()
                 }
             } label: {
-                Text(authManager.isCurrentUser(user) ? "Edit Profile" : "Follow")
+                Text(buttonTitle)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .frame(width: 360, height: 32)
-                    .background(authManager.isCurrentUser(user) ? .white : Color(UIColor.systemBlue))
-                    .foregroundStyle(authManager.isCurrentUser(user) ? .black : .white)
+                    .background(buttonBackgroundColor)
+                    .foregroundStyle(buttonForegroundColor)
                     .clipShape(RoundedRectangle(cornerRadius: 6))
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke(authManager.isCurrentUser(user) ?  Color.gray : .clear, lineWidth: 1)
+                            .stroke(buttonBorderColor, lineWidth: 1)
                     )
             }
             Divider()
@@ -75,6 +119,14 @@ struct ProfileHeader: View {
         .fullScreenCover(isPresented: $showEditProfile, content: {
             EditProfileView(user: user)
         })
+    }
+
+    private func handledFollowTapped() {
+        if isFollowed {
+            viewModel.unfollow()
+        } else {
+            viewModel.follow()
+        }
     }
 }
 

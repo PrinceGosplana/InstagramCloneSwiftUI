@@ -15,7 +15,7 @@ struct User: Identifiable, Codable, Hashable {
     var fullName: String?
     var bio: String?
     var email: String
-
+    var isFollowed: Bool? = false
 }
 
 extension User {

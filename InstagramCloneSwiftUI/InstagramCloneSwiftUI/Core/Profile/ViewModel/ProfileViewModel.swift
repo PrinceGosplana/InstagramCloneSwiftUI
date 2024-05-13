@@ -7,6 +7,12 @@
 
 import Foundation
 
+protocol ProfileFollowProtocol: AnyObject {
+    func follow()
+    func unfollow()
+    func checkIfUserIsFollow()
+}
+
 @MainActor
 final class ProfileViewModel: ObservableObject {
     
@@ -28,4 +34,22 @@ final class ProfileViewModel: ObservableObject {
             print("Error while fetching user's posts \(error.localizedDescription)")
         }
     }
+}
+
+// MARK: - Following
+
+extension ProfileViewModel: ProfileFollowProtocol {
+    func follow() {
+        user.isFollowed = true
+    }
+    
+    func unfollow() {
+        user.isFollowed = false
+    }
+    
+    func checkIfUserIsFollow() {
+
+    }
+    
+
 }

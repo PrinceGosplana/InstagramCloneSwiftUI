@@ -369,12 +369,12 @@
 		8AF5FDC42BCD91310060B17D /* InstagramCloneSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				8A25BAA72BED1AAF00D7EBE2 /* Managers */,
 				8AF5FDD32BCE57EB0060B17D /* App */,
 				8AF5FDC92BCD91330060B17D /* Assets.xcassets */,
-				8AE0EDEF2BD1164300CEF6BB /* GoogleService-Info.plist */,
 				8AF5FDD42BCE57F10060B17D /* Core */,
 				8AF5FDD52BCE57F60060B17D /* Extensions */,
+				8AE0EDEF2BD1164300CEF6BB /* GoogleService-Info.plist */,
+				8A25BAA72BED1AAF00D7EBE2 /* Managers */,
 				8AF5FDD62BCE58000060B17D /* Model */,
 				8AF5FDCB2BCD91330060B17D /* Preview Content */,
 				8AF5FDD72BCE58070060B17D /* Services */,
