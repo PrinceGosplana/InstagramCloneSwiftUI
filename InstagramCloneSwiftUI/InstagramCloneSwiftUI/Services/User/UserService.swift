@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 final class UserService {
 
     @Published var currentUser: User?
@@ -32,4 +33,20 @@ final class UserService {
         User.mockUsers.filter { $0.id == uid }.first ?? Constants.currentMockUser
     }
 
+}
+
+// MARK: - Following
+
+extension UserService: UserServiceFollowingProtocol {
+    static func follow(uid: String) async throws {
+
+    }
+
+    static func unfollow(uid: String) async throws {
+
+    }
+
+    static func checkIfUserfollow(uid: String) async throws -> Bool {
+        false
+    }
 }

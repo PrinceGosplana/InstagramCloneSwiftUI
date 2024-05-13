@@ -40,16 +40,22 @@ final class ProfileViewModel: ObservableObject {
 
 extension ProfileViewModel: ProfileFollowProtocol {
     func follow() {
-        user.isFollowed = true
+        Task {
+            try await UserService.follow(uid: user.id)
+            user.isFollowed = true
+        }
     }
     
     func unfollow() {
-        user.isFollowed = false
+        Task {
+            try await UserService.unfollow(uid: user.id)
+            user.isFollowed = false
+        }
     }
     
     func checkIfUserIsFollow() {
-
+        Task {
+            user.isFollowed = try await UserService.checkIfUserfollow(uid: user.id)
+        }
     }
-    
-
 }
