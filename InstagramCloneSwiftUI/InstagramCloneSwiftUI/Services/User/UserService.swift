@@ -19,7 +19,7 @@ final class UserService {
     private var mockUser: User { Constants.currentMockUser }
     private static var users = [User]()
     private init() {}
-    
+
     func fetchCurrentUser() async throws {
         currentUser = mockUser
     }
@@ -39,6 +39,29 @@ final class UserService {
         User.mockUsers.filter { $0.id == uid }.first ?? Constants.currentMockUser
     }
 
+    static func fetchUsers(forConfig config: UserListConfig) async throws -> [User] {
+        switch config {
+        case .followers(let uid):
+            return try await fetchFollowers(uid: uid)
+        case .following(let uid):
+            return try await fetchFollowing(uid: uid)
+        case .likes(let postId):
+            return try await fetchPostLikesUsers(postId: postId)
+        case .explore:
+            return try await fetchAllUsers()
+        }
+    }
+
+    private static func fetchFollowers(uid: String) async throws -> [User] {
+        User.mockUsers.filter { $0.id != uid }
+    }
+    private static func fetchFollowing(uid: String) async throws -> [User] {
+        User.mockUsers.filter { $0.id != uid }
+    }
+
+    private static func fetchPostLikesUsers(postId: String) async throws -> [User] {
+        User.mockUsers
+    }
 }
 
 // MARK: - Following

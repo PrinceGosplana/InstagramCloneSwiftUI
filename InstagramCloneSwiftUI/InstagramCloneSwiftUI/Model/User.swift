@@ -49,7 +49,7 @@ extension User {
             email: "venom@gmail.com",
             stats: UserStats(
                 followingCount: 1,
-                followersCount: 12,
+                followersCount: 1,
                 postsCount: 2
             )
         ),

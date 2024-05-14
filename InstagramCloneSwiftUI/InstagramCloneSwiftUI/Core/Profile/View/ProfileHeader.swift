@@ -125,7 +125,7 @@ struct ProfileHeader: View {
             Divider()
         }
         .navigationDestination(for: UserListConfig.self, destination: { config in
-            
+            UsersList(config: config)
         })
         .fullScreenCover(isPresented: $showEditProfile, content: {
             EditProfileView(user: user)
