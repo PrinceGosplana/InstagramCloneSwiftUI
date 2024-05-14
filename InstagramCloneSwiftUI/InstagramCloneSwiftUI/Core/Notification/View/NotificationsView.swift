@@ -9,11 +9,11 @@ import SwiftUI
 
 struct NotificationsView: View {
 
-    @StateObject var viewModel = NotificationsViewModel()
-    
+    @StateObject var viewModel = NotificationsViewModel(service: NotificationService())
+
     var body: some View {
         NavigationStack {
-            ScrollView  {
+            ScrollView {
                 LazyVStack(spacing: 20) {
                     ForEach(viewModel.notifications) { notification in
                         NotificationCell(notification: notification)

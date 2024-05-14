@@ -8,13 +8,20 @@
 import Foundation
 
 final class NotificationsViewModel: ObservableObject {
-    @Published var notifications = [IGNotification]()
+    @MainActor @Published var notifications = [IGNotification]()
 
-    init() {
+    private let service: NotificationServiceProtocol
 
+    init(service: NotificationServiceProtocol) {
+        self.service = service
     }
 
     func fetchNotifications() {
-        notifications = IGNotification.mockNotifications
+        Task { 
+            let values = try await service.fetchNotifications()
+            await MainActor.run {
+                notifications = values
+            }
+        }
     }
 }
