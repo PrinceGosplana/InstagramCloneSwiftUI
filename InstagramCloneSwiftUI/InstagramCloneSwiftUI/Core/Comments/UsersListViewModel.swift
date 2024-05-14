@@ -11,12 +11,14 @@ final class UsersListViewModel: ObservableObject {
 
     @Published var users = [User]()
 
-    init() {
-        Task { try await fetchAllUsers() }
-    }
+    init() {}
 
     @MainActor
-    func fetchAllUsers() async throws {
-        users = try await UserService.fetchAllUsers()
+    func fetchUsers(forConfig config: UserListConfig) async {
+        do {
+            users = try await UserService.fetchAllUsers()
+        } catch {
+            print("Failed to fetch users with error \(error.localizedDescription)")
+        }
     }
 }

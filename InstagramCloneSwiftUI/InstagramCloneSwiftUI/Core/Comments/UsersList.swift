@@ -11,6 +11,12 @@ struct UsersList: View {
 
     @StateObject var viewModel = UsersListViewModel()
     @State private var searchText = ""
+
+    private let config: UserListConfig
+
+    init(config: UserListConfig) {
+        self.config = config
+    }
     
     var body: some View {
         ScrollView {
@@ -40,9 +46,10 @@ struct UsersList: View {
             .padding(.top, 8)
             .searchable(text: $searchText, prompt: "Search...")
         }
+        .task { await viewModel.fetchUsers(forConfig: config) }
     }
 }
 
 #Preview {
-    UsersList()
+    UsersList(config: .explore)
 }
