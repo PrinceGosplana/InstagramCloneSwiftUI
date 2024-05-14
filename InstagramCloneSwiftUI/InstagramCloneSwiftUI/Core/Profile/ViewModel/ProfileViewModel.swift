@@ -24,6 +24,7 @@ final class ProfileViewModel: ObservableObject {
     }
 
     func fetchUserPosts() async {
+        guard !posts.isEmpty else { return }
         do {
             let posts = try await PostsService.shared.fetchUsersPosts(user: user)
             await MainActor.run {
@@ -35,6 +36,7 @@ final class ProfileViewModel: ObservableObject {
     }
 
     func fetchUserStats() async {
+        guard user.stats == nil else { return }
         do {
             user.stats = try await UserService.fetchUserStats(uid: user.id)
         } catch {
@@ -61,6 +63,7 @@ extension ProfileViewModel: ProfileFollowProtocol {
     }
     
     func checkIfUserIsFollow() async {
+        guard user.isFollowed == nil else { return }
         Task {
             user.isFollowed = try await UserService.checkIfUserfollow(uid: user.id)
         }

@@ -73,7 +73,6 @@ extension UserService {
         guard let userIndex = userIndex(uid: uid) else { throw UserServiceErrors.userNotFound }
         guard let stats = users[userIndex].stats else { throw UserServiceErrors.userNotFound }
 
-        print("DEBUG: Did fetch user stats...")
         return .init(
             followingCount: stats.followingCount,
             followersCount: stats.followersCount,
