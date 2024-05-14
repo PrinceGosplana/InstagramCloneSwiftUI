@@ -30,7 +30,7 @@ struct MainTabView: View {
                 .onAppear { selectedTab = .uploadPost }
                 .tabItem { Image(systemName: "plus.square") }
                 .tag(SelectedTab.uploadPost)
-            Text("Notification")
+            NotificationsView()
                 .onAppear { selectedTab = .notification }
                 .tabItem { Image(systemName: "heart") }
                 .tag(SelectedTab.notification)
