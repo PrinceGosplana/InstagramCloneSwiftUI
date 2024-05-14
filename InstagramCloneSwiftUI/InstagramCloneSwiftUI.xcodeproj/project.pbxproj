@@ -35,6 +35,7 @@
 		8A329DAA2BF3161E00EA7CF8 /* UsersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DA92BF3161E00EA7CF8 /* UsersListViewModel.swift */; };
 		8A329DB12BF3640D00EA7CF8 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DB02BF3640D00EA7CF8 /* NotificationCell.swift */; };
 		8A329DB32BF366DD00EA7CF8 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DB22BF366DD00EA7CF8 /* NotificationsView.swift */; };
+		8A329DB52BF3686600EA7CF8 /* IGNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DB42BF3686600EA7CF8 /* IGNotification.swift */; };
 		8AB649C42BCE606C006B1F43 /* UserStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C32BCE606C006B1F43 /* UserStatView.swift */; };
 		8AB649C62BCE687F006B1F43 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C52BCE687F006B1F43 /* FeedView.swift */; };
 		8AB649C82BCE6888006B1F43 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C72BCE6888006B1F43 /* FeedCell.swift */; };
@@ -98,6 +99,7 @@
 		8A329DA92BF3161E00EA7CF8 /* UsersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewModel.swift; sourceTree = "<group>"; };
 		8A329DB02BF3640D00EA7CF8 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		8A329DB22BF366DD00EA7CF8 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		8A329DB42BF3686600EA7CF8 /* IGNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGNotification.swift; sourceTree = "<group>"; };
 		8AB649C32BCE606C006B1F43 /* UserStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatView.swift; sourceTree = "<group>"; };
 		8AB649C52BCE687F006B1F43 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		8AB649C72BCE6888006B1F43 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 		8A329DAC2BF363D700EA7CF8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8A329DB42BF3686600EA7CF8 /* IGNotification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				8A329D922BF0AE5B00EA7CF8 /* Comment.swift in Sources */,
 				8AB64A262BCFBA3D006B1F43 /* AddEmailView.swift in Sources */,
 				8AB64A2E2BCFDBEE006B1F43 /* IGMainButtonModifier.swift in Sources */,
+				8A329DB52BF3686600EA7CF8 /* IGNotification.swift in Sources */,
 				8AB64A282BCFD29F006B1F43 /* IGTextModifier.swift in Sources */,
 				8A25BAB52BEE173A00D7EBE2 /* UserService.swift in Sources */,
 				8A329D9B2BF0B5B600EA7CF8 /* MockCommentService.swift in Sources */,
