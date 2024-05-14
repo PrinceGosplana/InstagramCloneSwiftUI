@@ -33,6 +33,7 @@
 		8A329DA62BF2592A00EA7CF8 /* UserConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DA52BF2592A00EA7CF8 /* UserConfig.swift */; };
 		8A329DA82BF315B700EA7CF8 /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DA72BF315B700EA7CF8 /* UsersList.swift */; };
 		8A329DAA2BF3161E00EA7CF8 /* UsersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DA92BF3161E00EA7CF8 /* UsersListViewModel.swift */; };
+		8A329DB12BF3640D00EA7CF8 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DB02BF3640D00EA7CF8 /* NotificationCell.swift */; };
 		8AB649C42BCE606C006B1F43 /* UserStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C32BCE606C006B1F43 /* UserStatView.swift */; };
 		8AB649C62BCE687F006B1F43 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C52BCE687F006B1F43 /* FeedView.swift */; };
 		8AB649C82BCE6888006B1F43 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C72BCE6888006B1F43 /* FeedCell.swift */; };
@@ -94,6 +95,7 @@
 		8A329DA52BF2592A00EA7CF8 /* UserConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfig.swift; sourceTree = "<group>"; };
 		8A329DA72BF315B700EA7CF8 /* UsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
 		8A329DA92BF3161E00EA7CF8 /* UsersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewModel.swift; sourceTree = "<group>"; };
+		8A329DB02BF3640D00EA7CF8 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		8AB649C32BCE606C006B1F43 /* UserStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatView.swift; sourceTree = "<group>"; };
 		8AB649C52BCE687F006B1F43 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		8AB649C72BCE6888006B1F43 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
@@ -303,6 +305,46 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		8A329DAB2BF363AC00EA7CF8 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				8A329DAC2BF363D700EA7CF8 /* Model */,
+				8A329DAF2BF363EF00EA7CF8 /* Service */,
+				8A329DAD2BF363DE00EA7CF8 /* View */,
+				8A329DAE2BF363E400EA7CF8 /* ViewModel */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		8A329DAC2BF363D700EA7CF8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A329DAD2BF363DE00EA7CF8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A329DB02BF3640D00EA7CF8 /* NotificationCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A329DAE2BF363E400EA7CF8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A329DAF2BF363EF00EA7CF8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		8A3FD9762BD3AC9C00FE5358 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +466,7 @@
 				8A329D882BF0A24200EA7CF8 /* Comments */,
 				8AB649C22BCE604B006B1F43 /* Components */,
 				8AF5FDDA2BCE58860060B17D /* Feed */,
+				8A329DAB2BF363AC00EA7CF8 /* Notification */,
 				8AF5FDD92BCE587D0060B17D /* Profile */,
 				8AF5FDDB2BCE58910060B17D /* Root */,
 				8AF5FDDC2BCE58970060B17D /* Search */,
@@ -650,6 +693,7 @@
 				8A329DA82BF315B700EA7CF8 /* UsersList.swift in Sources */,
 				8AB649C42BCE606C006B1F43 /* UserStatView.swift in Sources */,
 				8A329D872BEFA16000EA7CF8 /* FeedCellViewModel.swift in Sources */,
+				8A329DB12BF3640D00EA7CF8 /* NotificationCell.swift in Sources */,
 				8AB649C62BCE687F006B1F43 /* FeedView.swift in Sources */,
 				8AF5FDE02BCE59010060B17D /* MainTabView.swift in Sources */,
 				8AE0EDE62BD016FF00CEF6BB /* Post.swift in Sources */,
