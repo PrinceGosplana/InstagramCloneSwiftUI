@@ -18,6 +18,8 @@ final class FeedCellViewModel: ObservableObject {
     func like() {
         post.didLike = true
         post.likes += 1
+//        PostsService.shared.
+        Task { await NotificationManager.shared.uploadCommentNotification(toUid: post.ownerUid, post: post) }
     }
 
     func unlike() {

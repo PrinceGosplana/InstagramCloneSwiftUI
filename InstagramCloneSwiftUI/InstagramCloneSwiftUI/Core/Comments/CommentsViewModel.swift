@@ -37,6 +37,8 @@ final class CommentsViewModel: ObservableObject {
         comments.insert(comment, at: 0)
         do {
             try await service.uploadComment(comment)
+            await NotificationManager.shared.uploadCommentNotification(toUid: post.ownerUid, post: post)
+
         } catch {
             print("Error while posting a comment \(error.localizedDescription)")
         }
