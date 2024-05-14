@@ -31,6 +31,8 @@
 		8A329DA12BF2015800EA7CF8 /* Date+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DA02BF2015800EA7CF8 /* Date+Extenstion.swift */; };
 		8A329DA42BF232D300EA7CF8 /* UserServiceFollowingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DA32BF232D300EA7CF8 /* UserServiceFollowingProtocol.swift */; };
 		8A329DA62BF2592A00EA7CF8 /* UserConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DA52BF2592A00EA7CF8 /* UserConfig.swift */; };
+		8A329DA82BF315B700EA7CF8 /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DA72BF315B700EA7CF8 /* UsersList.swift */; };
+		8A329DAA2BF3161E00EA7CF8 /* UsersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A329DA92BF3161E00EA7CF8 /* UsersListViewModel.swift */; };
 		8AB649C42BCE606C006B1F43 /* UserStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C32BCE606C006B1F43 /* UserStatView.swift */; };
 		8AB649C62BCE687F006B1F43 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C52BCE687F006B1F43 /* FeedView.swift */; };
 		8AB649C82BCE6888006B1F43 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB649C72BCE6888006B1F43 /* FeedCell.swift */; };
@@ -90,6 +92,8 @@
 		8A329DA02BF2015800EA7CF8 /* Date+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extenstion.swift"; sourceTree = "<group>"; };
 		8A329DA32BF232D300EA7CF8 /* UserServiceFollowingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceFollowingProtocol.swift; sourceTree = "<group>"; };
 		8A329DA52BF2592A00EA7CF8 /* UserConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfig.swift; sourceTree = "<group>"; };
+		8A329DA72BF315B700EA7CF8 /* UsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
+		8A329DA92BF3161E00EA7CF8 /* UsersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewModel.swift; sourceTree = "<group>"; };
 		8AB649C32BCE606C006B1F43 /* UserStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatView.swift; sourceTree = "<group>"; };
 		8AB649C52BCE687F006B1F43 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		8AB649C72BCE6888006B1F43 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				8A329D952BF0AF4C00EA7CF8 /* CommentsViewModel.swift */,
+				8A329DA92BF3161E00EA7CF8 /* UsersListViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 			children = (
 				8A329D8D2BF0A28800EA7CF8 /* Comments.swift */,
 				8A329D8F2BF0A29100EA7CF8 /* CommentCell.swift */,
+				8A329DA72BF315B700EA7CF8 /* UsersList.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -604,6 +610,7 @@
 				8AB64A322BCFDF0F006B1F43 /* TitleLoginFlow.swift in Sources */,
 				8AE0EDEC2BD0F44A00CEF6BB /* UploadPostView.swift in Sources */,
 				8A329D962BF0AF4C00EA7CF8 /* CommentsViewModel.swift in Sources */,
+				8A329DAA2BF3161E00EA7CF8 /* UsersListViewModel.swift in Sources */,
 				8A25BAC42BEE3C2400D7EBE2 /* PostsService.swift in Sources */,
 				8A25BACA2BEE42C500D7EBE2 /* ProfileViewModel.swift in Sources */,
 				8AB64A2A2BCFD844006B1F43 /* CreateUserNameView.swift in Sources */,
@@ -640,6 +647,7 @@
 				8A329DA42BF232D300EA7CF8 /* UserServiceFollowingProtocol.swift in Sources */,
 				8AE0EDEA2BD023C700CEF6BB /* ProfileHeader.swift in Sources */,
 				8A25BAA92BED1AC600D7EBE2 /* AuthManager.swift in Sources */,
+				8A329DA82BF315B700EA7CF8 /* UsersList.swift in Sources */,
 				8AB649C42BCE606C006B1F43 /* UserStatView.swift in Sources */,
 				8A329D872BEFA16000EA7CF8 /* FeedCellViewModel.swift in Sources */,
 				8AB649C62BCE687F006B1F43 /* FeedView.swift in Sources */,
