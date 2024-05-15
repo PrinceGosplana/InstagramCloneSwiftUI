@@ -11,9 +11,11 @@ final class NotificationsViewModel: ObservableObject {
     @MainActor @Published var notifications = [IGNotification]()
 
     private let service: NotificationServiceProtocol
+    private var currentUser: User?
 
     init(service: NotificationServiceProtocol) {
         self.service = service
+        currentUser = UserService.shared.currentUser
     }
 
     func fetchNotifications() {
@@ -34,8 +36,9 @@ final class NotificationsViewModel: ObservableObject {
 
             if let postId = notification.postId {
                 notification.post = try await PostsService.fetchPost(postId)
+                notification.post?.user = UserService.shared.currentUser
             }
-
+            notifications[i] = notification
 
         }
     }

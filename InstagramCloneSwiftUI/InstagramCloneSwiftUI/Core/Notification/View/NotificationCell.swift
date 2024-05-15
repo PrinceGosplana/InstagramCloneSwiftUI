@@ -35,7 +35,9 @@ struct NotificationCell: View {
             Spacer()
 
             if notification.type != .follow {
-                PostImageView()
+                NavigationLink(value: notification.post) {
+                    PostImageView()
+                }
             } else {
                 FollowButton()
             }
