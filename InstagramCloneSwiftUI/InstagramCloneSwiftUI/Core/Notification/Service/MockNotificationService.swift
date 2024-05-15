@@ -25,7 +25,12 @@ actor MockNotificationService: NotificationServiceProtocol {
         )
     }
 
-    func deleteNotification(toUid uid: String, type: NotificationType, post: Post? = nil) {
+    func deleteNotification(toUid uid: String, type: NotificationType, post: Post? = nil) async {
+        guard let currentUid = UserService.shared.currentUser?.id, uid != currentUid else { return }
+        do {
+            let notifications = try await NotificationService().fetchNotifications()
+        } catch {
 
+        }
     }
 }

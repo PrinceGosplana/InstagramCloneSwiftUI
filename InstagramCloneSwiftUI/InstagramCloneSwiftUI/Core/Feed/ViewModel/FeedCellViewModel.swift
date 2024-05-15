@@ -18,12 +18,18 @@ final class FeedCellViewModel: ObservableObject {
     func like() {
         post.didLike = true
         post.likes += 1
-//        PostsService.shared.
+
         Task { await NotificationManager.shared.uploadCommentNotification(toUid: post.ownerUid, post: post) }
     }
 
     func unlike() {
         post.didLike = false
         post.likes -= 1
+
+        Task { await NotificationManager.shared.deleteLikeNotification(notificationOwnerUid: post.ownerUid, post: post) }
+    }
+
+    func checkIfUserLikePost() async throws {
+//        post.didLike = try await PostsService.c
     }
 }
