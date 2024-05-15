@@ -24,6 +24,9 @@ struct NotificationsView: View {
             .task {
                 viewModel.fetchNotifications()
             }
+            .navigationDestination(for: User.self, destination: { user in
+                ProfileView(user: user)
+            })
             .navigationTitle("Notifications")
             .navigationBarTitleDisplayMode(.inline)
         }

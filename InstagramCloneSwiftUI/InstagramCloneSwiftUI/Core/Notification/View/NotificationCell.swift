@@ -14,7 +14,10 @@ struct NotificationCell: View {
     var body: some View {
         HStack {
 
-            CircularImage(user: notification.user, size: .xSmall)
+            NavigationLink(value: notification.user) {
+                CircularImage(user: notification.user, size: .xSmall)
+            }
+            
             // notification message
             HStack {
                 Text(notification.user?.userName ?? "")
@@ -28,7 +31,7 @@ struct NotificationCell: View {
                     .foregroundStyle(.gray)
                     .font(.footnote)
             }
- 
+
             Spacer()
 
             if notification.type != .follow {
