@@ -22,6 +22,21 @@ final class NotificationsViewModel: ObservableObject {
             await MainActor.run {
                 notifications = values
             }
+            try await updateNOtifications()
+        }
+    }
+
+    @MainActor 
+    private func updateNOtifications() async throws {
+        for i in 0 ..< notifications.count {
+            var notification = notifications[i]
+            notification.user = try await UserService.fetchUser(withUid: notification.notificationSenderUid)
+
+            if let postId = notification.postId {
+                notification.post = try await PostsService.fetchPost(postId)
+            }
+
+
         }
     }
 }

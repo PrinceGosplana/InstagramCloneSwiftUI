@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum PostError: Error {
+    case postNotFound
+}
+
 actor PostsService: PostsServiceProtocol {
 
     static let shared = PostsService()
@@ -21,5 +25,10 @@ actor PostsService: PostsServiceProtocol {
 
     func uploadPost(user: User, post: Post) async throws {
         
+    }
+
+    static func fetchPost(_ postId: String) async throws -> Post {
+        guard let post = Post.mockPosts.filter({ $0.user?.id == postId}).first else { throw PostError.postNotFound }
+        return post
     }
 }

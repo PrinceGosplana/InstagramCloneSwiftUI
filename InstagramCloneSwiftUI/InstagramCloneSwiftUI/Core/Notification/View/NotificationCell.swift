@@ -13,21 +13,22 @@ struct NotificationCell: View {
 
     var body: some View {
         HStack {
-            CircularImage(user: nil, size: .xSmall)
+
+            CircularImage(user: notification.user, size: .xSmall)
             // notification message
             HStack {
-                Text("yuki ")
+                Text(notification.user?.userName ?? "")
                     .font(.subheadline)
                     .fontWeight(.semibold) +
 
                 Text("\(notification.type.notificationMessage) ")
                     .font(.subheadline) +
 
-                Text(" 3w")
+                Text(" \(notification.date.timeToString())")
                     .foregroundStyle(.gray)
                     .font(.footnote)
             }
-
+ 
             Spacer()
 
             if notification.type != .follow {
